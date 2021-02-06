@@ -5,12 +5,11 @@
 // Global variables
 // Heart scoreboard
 const scoreboard = document.querySelectorAll('.tries img');
-// Overlay
+// Page overlay
 const overlay = document.getElementById('overlay');
-// letter regex
-const regexLetter = /[A-Za-z]/;
 // All qwerty letter keys
 const keys = document.querySelectorAll('.key');
+
 /**
  * Game class for managing the game
  * Constructor set missed to 0 and no active phrase to begin new game
@@ -54,12 +53,12 @@ class Game {
 * Resets game board and heart images
 * Removes overlay, selects random phrase, and displays empty boxes for phrase
   */
+
   startGame () {
     // Remove all li elements from the Phrase ul element
     let phraseSectionUl = document.getElementById('phrase').firstElementChild;
     phraseSectionUl.innerHTML = '';
     // Enable all onscreen keyboard buttons and update each to class key
-    // const keys = document.querySelectorAll('.key'); - moved to global
     keys.forEach(key => {
       key.className = 'key';
       key.disabled = false;
@@ -68,10 +67,8 @@ class Game {
     scoreboard.forEach(heart => {
       heart.src = 'images/liveHeart.png';
     });
-    // Remove overlay, select random phrase, reset missed to 0, and display empty boxes for phrase
-    // const overlay = document.getElementById('overlay'); - moved to global
     overlay.style.display = 'none';
-    // Changed font and background color
+    // Exceeds - Changed font and background color
     document.body.style.backgroundColor = '#E6B0AA';
     document.querySelector('.header').style.color = '#2E4053';
     this.activePhrase = this.getRandomPhrase();
@@ -98,13 +95,11 @@ class Game {
   /**
 * Method removeLife icreases missed number
 * Then replaces a live heart image with a lost heart image
-* For each heart lost the background color changes to a darker shade
+* Exceeds - For each heart lost the background color changes to a darker shade
   */
+
   removeLife () {
-    // increases missed number
     this.missed += 1;
-    // replaces liveHeart.png with lostHeart.png
-    // const scoreboard = document.querySelectorAll('.tries img'); - moved to global
     scoreboard[this.missed - 1].src = 'images/lostHeart.png';
     if (this.missed === 1) { document.body.style.backgroundColor = '#D98880'; }
     if (this.missed === 2) { document.body.style.backgroundColor = '#CD6155'; }
@@ -123,7 +118,6 @@ class Game {
   */
 
   gameOver () {
-    // const overlay = document.getElementById('overlay'); - moved to global
     const gameOverMessage = document.getElementById('game-over-message');
     overlay.style.display = 'block';
     if (!this.checkForWin()) {

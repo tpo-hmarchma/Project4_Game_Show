@@ -27,6 +27,7 @@ qwertySection.addEventListener('click', (e) => {
 
 /**
  * Exceeds - add keyboard functionality so users can use physical computer keyboard
+ * If the key chosen using the physical keyboard was already selected an alert opens
 */
 
 document.addEventListener('keydown', (e) => {

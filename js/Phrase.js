@@ -21,13 +21,14 @@ class Phrase {
     const currentChars = [...this.phrase];
     // Assigned the Ul child element of the phrase Div element to variable
     const phraseSectionUl = document.getElementById('phrase').firstElementChild;
-    // Regex to test for any alphanumeric character
-    //const regexLetter = /\w/; - changed and move to global on Game class
+
     
 
     for (let i = 0; i < currentChars.length; i++) {
       // if currentChars is a character - add an li element for a letter with hide letter class name
       // else add an li element for a space with space class name
+      // Variable letter regex to test for letter only
+      const regexLetter = /[A-Za-z]/;
       if (regexLetter.test(currentChars[i])) {
         const phraseLi = phraseSectionUl.appendChild(document.createElement('li'));
         phraseLi.className = `hide letter ${currentChars[i]}`;
