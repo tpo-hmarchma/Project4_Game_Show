@@ -50,23 +50,10 @@ class Game {
 
   /**
 * Method startGame to begin a new game game
-* Resets game board and heart images
 * Removes overlay, selects random phrase, and displays empty boxes for phrase
   */
 
   startGame () {
-    // Remove all li elements from the Phrase ul element
-    let phraseSectionUl = document.getElementById('phrase').firstElementChild;
-    phraseSectionUl.innerHTML = '';
-    // Enable all onscreen keyboard buttons and update each to class key
-    keys.forEach(key => {
-      key.className = 'key';
-      key.disabled = false;
-    });
-    // Reset heart images to liveHeart
-    scoreboard.forEach(heart => {
-      heart.src = 'images/liveHeart.png';
-    });
     overlay.style.display = 'none';
     // Exceeds - Changed font and background color
     document.body.style.backgroundColor = '#E6B0AA';
@@ -115,6 +102,7 @@ class Game {
   /**
 * Method gameOver
 * When game is a loss the activePhrase is displayed in the gameOverMessage
+* Then resets game board and heart images for new game
   */
 
   gameOver () {
@@ -129,6 +117,18 @@ class Game {
       overlay.style.backgroundColor = '#1ABC9C';
       gameOverMessage.textContent = 'Congratulations you won! Play again?';
     }
+    // Remove all li elements from the Phrase ul element
+    let phraseSectionUl = document.getElementById('phrase').firstElementChild;
+    phraseSectionUl.innerHTML = '';
+    // Enable all onscreen keyboard buttons and update each to class key
+    keys.forEach(key => {
+      key.className = 'key';
+      key.disabled = false;
+    });
+    // Reset heart images to liveHeart
+    scoreboard.forEach(heart => {
+      heart.src = 'images/liveHeart.png';
+    });
   }
 
   /**
